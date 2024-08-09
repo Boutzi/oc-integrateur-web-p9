@@ -1,0 +1,10 @@
+DoneList P9 :
+
+- Réglé les anchor link + scrool behaviour smoothly
+- Form : affichage de la modale au click "envoyer" en envoyant setIsOpened (Form) en props et en l'ajoutant dans le try&catch + check de champs required + add email.type. ET ajout d'un useRef pour reset le formulaire une fois celui-ci envoyé.
+
+ToDo :
+
+- 3a => Modale (pb avec la prop "opened" ou le setter setIsOpened().) useCallback?
+- 4a => Footer L117 <EventCard> (pas de src à l'IMG envoyé au DOM). Envoyer le data de EventList en prop pour le récupérer correctement dans l'EventCard. Probablement avec useCallback et useState ?
+- 

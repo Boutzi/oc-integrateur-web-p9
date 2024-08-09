@@ -5,9 +5,10 @@ import "./style.scss";
 export const FIELD_TYPES = {
   INPUT_TEXT: 1,
   TEXTAREA: 2,
+  EMAIL: 3,
 };
 
-const Field = ({ type = FIELD_TYPES.INPUT_TEXT, label, name, placeholder }) => {
+const Field = ({ type = FIELD_TYPES.INPUT_TEXT, label, name, placeholder, isRequired }) => {
   let component;
   switch (type) {
     case FIELD_TYPES.INPUT_TEXT:
@@ -17,11 +18,25 @@ const Field = ({ type = FIELD_TYPES.INPUT_TEXT, label, name, placeholder }) => {
           name={name}
           placeholder={placeholder}
           data-testid="field-testid"
+          required={isRequired}
         />
       );
       break;
     case FIELD_TYPES.TEXTAREA:
-      component = <textarea name={name} data-testid="field-testid" />;
+      component = <textarea name={name} data-testid="field-testid" required={isRequired} />;
+      break;
+    case FIELD_TYPES.EMAIL:
+      component = (
+        <input
+          type="email"
+          name={name}
+          placeholder={placeholder}
+          data-testid="field-testid"
+          autoComplete="email"
+          autoCapitalize="off"
+          required={isRequired}
+        />
+      );
       break;
     default:
       component = (
@@ -30,12 +45,16 @@ const Field = ({ type = FIELD_TYPES.INPUT_TEXT, label, name, placeholder }) => {
           name={name}
           placeholder={placeholder}
           data-testid="field-testid"
+          required={isRequired}
         />
       );
   }
   return (
     <div className="inputField">
-      <span>{label}</span>
+      <span>
+        {label}
+        {isRequired ? " *" : ""}
+      </span>
       {component}
     </div>
   );
@@ -46,12 +65,14 @@ Field.propTypes = {
   name: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string,
+  isRequired: PropTypes.bool,
 };
- Field.defaultProps = {
-   label: "",
-   placeholder: "",
-   type: FIELD_TYPES.INPUT_TEXT,
-   name: "field-name",
- }
+Field.defaultProps = {
+  label: "",
+  placeholder: "",
+  type: FIELD_TYPES.INPUT_TEXT,
+  name: "field-name",
+  isRequired: false,
+};
 
 export default Field;
