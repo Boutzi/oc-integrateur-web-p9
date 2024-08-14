@@ -44,6 +44,15 @@ describe("When a field is created", () => {
     });
   });
 
+  describe("and its type is set to FIELD_TYPES.EMAIL", () => {
+    it("an email input is rendered", () => {
+      window.console.error = jest.fn().mockImplementation(() => null); // disable propTypes warning
+      render(<Field type={FIELD_TYPES.EMAIL} name="test" />);
+      const fieldElement = screen.getByTestId("field-testid");
+      expect(fieldElement.type).toEqual("email");
+    });
+  });
+
   describe("and its type is set to FIELD_TYPES.TEXTAREA", () => {
     it("a textarea is rendered", () => {
       window.console.error = jest.fn().mockImplementation(() => null); // disable propTypes warning

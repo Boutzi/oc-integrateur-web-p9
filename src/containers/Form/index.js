@@ -9,7 +9,7 @@ const mockContactApi = () =>
     setTimeout(resolve, 500);
   });
 
-const Form = ({ onSuccess, onError, setIsOpened }) => {
+const Form = ({ onSuccess, onError }) => {
   const [sending, setSending] = useState(false);
   const formRef = useRef(null);
 
@@ -25,7 +25,6 @@ const Form = ({ onSuccess, onError, setIsOpened }) => {
           formRef.current.reset();
         }
         onSuccess();
-        setIsOpened(true);
 
       } catch (err) {
         setSending(false);
@@ -63,7 +62,6 @@ const Form = ({ onSuccess, onError, setIsOpened }) => {
 Form.propTypes = {
   onError: PropTypes.func,
   onSuccess: PropTypes.func,
-  setIsOpened: PropTypes.func.isRequired,
 };
 
 Form.defaultProps = {

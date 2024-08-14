@@ -19,11 +19,15 @@ export const api = {
 export const DataProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true)
   const getData = useCallback(async () => {
     try {
+      setLoading(true);
       setData(await api.loadData());
     } catch (err) {
       setError(err);
+    } finally {
+      setLoading(false)
     }
   }, []);
   useEffect(() => {
@@ -36,6 +40,7 @@ export const DataProvider = ({ children }) => {
       // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         data,
+        loading,
         error,
       }}
     >

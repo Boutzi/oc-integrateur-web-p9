@@ -5,6 +5,5 @@ DoneList P9 :
 
 ToDo :
 
-- 3a => Modale (pb avec la prop "opened" ou le setter setIsOpened().) useCallback?
 - 4a => Footer L117 <EventCard> (pas de src à l'IMG envoyé au DOM). Envoyer le data de EventList en prop pour le récupérer correctement dans l'EventCard. Probablement avec useCallback et useState ?
 - 

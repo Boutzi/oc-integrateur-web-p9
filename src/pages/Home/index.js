@@ -13,7 +13,8 @@ import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
-  const {last} = useData()
+  const {data} = useData()
+  const last = data?.events[data.events.length -1]
   return <>
     <header>
       <Menu />
@@ -94,7 +95,7 @@ const Page = () => {
       <div className="FormContainer" id="contact">
         <h2 className="Title">Contact</h2>
         <Modal
-        opened=""
+        opened={false}
           Content={
             <div className="ModalMessage--success">
               <div>Message envoyé !</div>
@@ -118,8 +119,8 @@ const Page = () => {
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
         <EventCard
-          imageSrc={last?.cover}
-          title={last?.title}
+          imageSrc={last?.cover || "Derniére prestation non trouvé"}
+          title={last?.title || "Derniére prestation non trouvé"}
           date={new Date(last?.date)}
           small
           label="boom"
