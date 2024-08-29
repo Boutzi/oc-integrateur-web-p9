@@ -15,6 +15,7 @@ import { useData } from "../../contexts/DataContext";
 const Page = () => {
   const {data} = useData()
   const last = data?.events[data.events.length -1]
+  
   return <>
     <header>
       <Menu />
@@ -119,8 +120,8 @@ const Page = () => {
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
         <EventCard
-          imageSrc={last?.cover || "Derniére prestation non trouvé"}
-          title={last?.title || "Derniére prestation non trouvé"}
+          imageSrc={last?.cover || ""}
+          title={last?.title || ""}
           date={new Date(last?.date)}
           small
           label="boom"
@@ -132,16 +133,16 @@ const Page = () => {
         <div>01 23 45 67 89</div>
         <div>contact@724events.com</div>
         <div>
-          <a href="#twitch">
+          <a href="https://www.twitch.tv" target="_blank" rel="noreferrer">
             <Icon name="twitch" />
           </a>
-          <a href="#facebook">
+          <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">
             <Icon name="facebook" />
           </a>
-          <a href="#twitter">
+          <a href="https://x.com/" target="_blank" rel="noreferrer">
             <Icon name="twitter" />
           </a>
-          <a href="#youtube">
+          <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">
             <Icon name="youtube" />
           </a>
         </div>
